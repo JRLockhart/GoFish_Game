@@ -8,6 +8,6 @@ namespace GoFish
 {
     class Game
     {
-
+        private List<Player> players;
     }
 }
