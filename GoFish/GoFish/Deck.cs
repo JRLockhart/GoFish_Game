@@ -75,5 +75,71 @@ namespace GoFish
         {
             cards.Sort(new CardComparer_bySuit());
         }
+
+        //look at a card in the deck without deleting it
+        public Card Peek(int cardNumber)
+        {
+            return cards[cardNumber];
+        }
+
+        //if no parameters are pass, deal a card off the top of the deck
+        public Card Deal()
+        {
+            return Deal(0);
+        }
+
+        //search through deck for card with certain value
+        public bool ContainsValue(Values value)
+        {
+            foreach (Card card in cards)
+            {
+                if (card.Value == value)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        //build the book of cards from deck
+        public Deck PullOutValues(Values value)
+        {
+            Deck deckToReturn = new Deck(new Card[] { });
+            for (int i = cards.Count - 1; i >= 0; i--)
+            {
+                if (cards[i].Value == value)
+                {
+                    deckToReturn.Add(Deal(i));
+                }
+            }
+            return deckToReturn;
+        }
+
+        //check to see if a book contains 4 cards
+        public bool HasBook(Values value)
+        {
+            int NumberOfCards = 0;
+            foreach (Card card in cards)
+            {
+                if (card.Value == value)
+                {
+                    NumberOfCards++;
+                }
+            }
+            if (NumberOfCards == 4)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    
+        //sort deck
+        public void SortByValue()
+        {
+            cards.Sort(new CardComparer_bySuit());
+        }
     }
 }

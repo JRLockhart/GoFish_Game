@@ -34,7 +34,7 @@ namespace GoFish
     }
 
 
-    public class Card
+    public partial class Card
     {
         public Suit Suit { get; set; }
         public Value Value { get; set; }
@@ -52,6 +52,19 @@ namespace GoFish
                 return Value.ToString() + " of " + Suit.ToString();
             }
         }
+
+        public static string Plural(Values value)
+        {
+            if (value == Values.Six)
+            {
+                return "Sixes";
+            }
+            else
+            {
+                return value.ToString() + "s";
+            }
+        }
         
+
     }
 }
